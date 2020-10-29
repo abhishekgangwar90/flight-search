@@ -1,8 +1,24 @@
-import { render, screen } from '@testing-library/react';
+/* eslint-disable react/jsx-props-no-spreading */
+import React from 'react';
+import { shallow } from 'enzyme';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+/**
+ * Setting up the component
+ * @param {*} props
+ */
+const setUpComponent = (props = {}) => {
+  return shallow(<App {...props} />);
+};
+
+describe('App Component', () => {
+  let component;
+  beforeAll(() => {
+    component = setUpComponent();
+  });
+
+  it('Should render the App without fail', () => {
+    const element = component.find('.App');
+    expect(element.length).toBe(1);
+  });
 });
