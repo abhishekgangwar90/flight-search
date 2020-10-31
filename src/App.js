@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.scss';
-import Layout from './molecules/Layout';
+import FlightListPage from './pages/FlightListPage';
 
 function App() {
   return (
-    <div className="App" data-test="app-container">
-      <Layout />
+    <div className="App" data-test="appComponent">
+      <FlightListPage />
     </div>
   );
 }

@@ -15,6 +15,14 @@ module.exports = {
       },
     ],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'react/jsx-props-no-spreading': [
+      0,
+      {
+        html: 'ignore',
+        custom: 'ignore',
+        explicitSpread: 'ignore',
+      },
+    ],
   },
   globals: {
     window: true,

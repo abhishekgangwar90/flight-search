@@ -2,6 +2,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import App from './App';
+import { findByTestAttribute } from './utils/app.utils';
 
 /**
  * Setting up the component
@@ -18,7 +19,7 @@ describe('App Component', () => {
   });
 
   it('Should render the App without fail', () => {
-    const element = component.find('.App');
+    const element = findByTestAttribute(component, 'appComponent');
     expect(element.length).toBe(1);
   });
 });
