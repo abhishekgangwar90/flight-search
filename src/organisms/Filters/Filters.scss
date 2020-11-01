@@ -1,16 +1,18 @@
+@import '../../theme/appTheme';
+
 .filterContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     padding: 10% 6%;
+    font-size: $fontMedium;
 }
 
 .filterAction{
     width: 75%;
     height: 5%;
     padding: 4%;
-    font-size: calc(8px + 1vmin);
     display: flex;
 
     span{
@@ -25,7 +27,31 @@
         white-space: nowrap;
     }
     .selected{
-        background-color: blue;
+        background-color: $primary;
         color:white
     }
+}
+
+.select{
+    width: inherit;
+    border-radius: 6px;
+    margin: 2% 0;
+    padding: 4%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+
+.button{
+    margin: 2% 0;
+    width: 50%;
+    height: 5%;
+    font-size: inherit;
+    // align-self: flex-start;
+    background-color: rgba(0, 115, 177,1.0);
+    color: white
 }

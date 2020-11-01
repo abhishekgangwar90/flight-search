@@ -1,8 +1,17 @@
+// application Color codes
+$primary: rgba(0, 115, 177,1.0);
+
+// Application Fonts
+$fontLarge: calc(8px + 2vmin);
+$fontMedium: calc(8px + 1vmin);
+
+// App Breakpoints for responsive layout
 $breakpoints: (
   'small':  ( max-width:  425px ),
   'medium': ( max-width:  768px ),
   'large':  ( max-width: 1024px )
 ) !default;
+
 
 @mixin respond-to($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {

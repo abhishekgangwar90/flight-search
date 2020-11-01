@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Button from '../../atoms/Button';
 import Input from '../../atoms/Input';
 import './Filters.scss';
 import Button from '../../atoms/Button';
+import Select from '../../atoms/Select';
+import { passengerSelectOptions } from './FilterConfig';
 
 function Filters({ isOneWay, setOneWay }) {
   const renderFilterAction = () => {
@@ -49,12 +50,25 @@ function Filters({ isOneWay, setOneWay }) {
     );
   };
 
+  const renderPassengerSelect = () => {
+    return (
+      <>
+        <Select
+          defaultValue={0}
+          name="Passengers"
+          options={passengerSelectOptions}
+        />
+      </>
+    );
+  };
+
   return (
     <div className="filterContainer">
       <div className="filterAction">{renderFilterAction()}</div>
-      <div>{renderFilterInputs()}</div>
-      <div>{renderDateSelection()}</div>
-      <Button>Search</Button>
+      {renderFilterInputs()}
+      {renderDateSelection()}
+      {renderPassengerSelect()}
+      <Button className="button">Search</Button>
     </div>
   );
 }

@@ -1,7 +1,9 @@
+@import './theme/appTheme';
+
 .App {
   display: flex;
   flex-direction: column;
-  font-size: calc(8px + 2vmin);
+  font-size: $fontLarge;
   min-height: 100vh;
   height: 100%;
 }
