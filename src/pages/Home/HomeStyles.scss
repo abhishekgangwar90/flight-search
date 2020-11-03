@@ -12,24 +12,25 @@
     display: flex;
     flex: 1 1 20%;
 
+    @include respond-to('medium'){
+      flex: 1 1 30%;
+    }
+
     @include respond-to('small'){
       flex: 1 1 100%;
     }
 
-    @include respond-to('medium'){
-      flex: 1 1 30%;
-    }
 }
 
 .content{
     display: flex;
     flex: 1 1 80%;
 
-    @include respond-to('small'){
-      flex: 1 1 100%;
-    }
-
     @include respond-to('medium'){
       flex: 1 1 70%;
+    }
+
+    @include respond-to('small'){
+      flex: 1 1 100%;
     }
 }

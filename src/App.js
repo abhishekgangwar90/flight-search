@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.scss';
-import FlightListPage from './pages/FlightListPage';
+import Home from './pages/Home';
 
 function App() {
   return (
     <div className="App" data-test="appComponent">
-      <FlightListPage />
+      <Home />
     </div>
   );
 }

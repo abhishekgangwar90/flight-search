@@ -1,0 +1,39 @@
+@import '../../theme/appTheme';
+
+.contentContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: 1px solid #e6e6e6;
+}
+
+.contentHeader{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 8%;
+    padding: 2% 0;
+    min-height: 2rem;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.headerIcon{
+    display: flex;
+    flex: 1 1 10%;
+    height: 100%;
+}
+
+.headerDetails{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 90%
+}
+
+.headerDetails .title{
+    font-size: inherit;
+    font-weight: bold;
+}
+
+.headerDetails .subTitle{
+    font-size: $fontSmall;
+}

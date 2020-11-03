@@ -1,13 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-// export const filterConfig = [{
-//     id: 1,
-//     name: 'Departure City',
-//     type: 'input',
-
-// }
-
-// ]
-
 export const passengerSelectOptions = [
   {
     id: 1,

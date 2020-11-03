@@ -10,7 +10,7 @@
 }
 
 .filterAction{
-    width: 75%;
+    width: 80%;
     height: 5%;
     padding: 4%;
     display: flex;
@@ -25,11 +25,22 @@
         border: 1px solid black;
         overflow: hidden;
         white-space: nowrap;
+        min-width: 2.5rem;
+        outline: none;
+        border-radius: 0;
     }
     .selected{
         background-color: $primary;
-        color:white
+        color:white;
     }
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .select{
@@ -50,8 +61,4 @@
     margin: 2% 0;
     width: 50%;
     height: 5%;
-    font-size: inherit;
-    // align-self: flex-start;
-    background-color: rgba(0, 115, 177,1.0);
-    color: white
 }

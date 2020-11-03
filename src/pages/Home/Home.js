@@ -1,10 +1,11 @@
 import React from 'react';
 
 import Header from '../../atoms/Header';
+import Content from '../../organisms/Content';
 import Filters from '../../organisms/Filters';
-import './FlightListStyles.scss';
+import './HomeStyles.scss';
 
-function FlightListPage() {
+function Home() {
   const [isOneWay, setOneWay] = React.useState(true);
 
   return (
@@ -14,10 +15,12 @@ function FlightListPage() {
         <div className="filters">
           <Filters isOneWay={isOneWay} setOneWay={setOneWay} />
         </div>
-        <div className="content">content</div>
+        <div className="content">
+          <Content isOneWay={isOneWay} />
+        </div>
       </div>
     </>
   );
 }
 
-export default FlightListPage;
+export default Home;

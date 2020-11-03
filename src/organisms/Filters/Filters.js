@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Input from '../../atoms/Input';
 import './Filters.scss';
-import Button from '../../atoms/Button';
-import Select from '../../atoms/Select';
-import { passengerSelectOptions } from './FilterConfig';
+import FilterFields from './FilterFields';
 
 function Filters({ isOneWay, setOneWay }) {
   const renderFilterAction = () => {
@@ -32,43 +29,10 @@ function Filters({ isOneWay, setOneWay }) {
     );
   };
 
-  const renderFilterInputs = () => {
-    return (
-      <>
-        <Input placeholder="Enter Origin City" />
-        <Input placeholder="Enter Destination City" />
-      </>
-    );
-  };
-
-  const renderDateSelection = () => {
-    return (
-      <>
-        <Input placeholder="Departure Date" />
-        {!isOneWay && <Input placeholder="Return Date" />}
-      </>
-    );
-  };
-
-  const renderPassengerSelect = () => {
-    return (
-      <>
-        <Select
-          defaultValue={0}
-          name="Passengers"
-          options={passengerSelectOptions}
-        />
-      </>
-    );
-  };
-
   return (
     <div className="filterContainer">
       <div className="filterAction">{renderFilterAction()}</div>
-      {renderFilterInputs()}
-      {renderDateSelection()}
-      {renderPassengerSelect()}
-      <Button className="button">Search</Button>
+      <FilterFields isOneWay={isOneWay} />
     </div>
   );
 }
