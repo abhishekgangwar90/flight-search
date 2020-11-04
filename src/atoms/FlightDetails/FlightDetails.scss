@@ -2,18 +2,23 @@
 
 .flightDetailsContainer{
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     border: 1px solid #e6e6e6;
     box-shadow: 5px 5px 5px #e6e6e6;
-    padding: 2% 0%;
     border-radius: 5px;
     margin: 1% 0;
 
     button{
         background-color: lightcoral;
     }
+}
+
+.mainContent{
+    display: flex;
+    padding: 2% 0%; 
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .section{
@@ -34,4 +39,14 @@
         font-weight: bold;
         color: lightcoral
     }
+
+    & .green{
+        color: green;
+        font-weight: bold;
+    }
+}
+
+
+.multipleFlightSection {
+    background-color: #e6e6e6;
 }

@@ -1,5 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 
+import { getTimeDiff } from '../../utils/app.utils';
+
 const changeDateFormatToYYYYMMDD = (date) => {
   return date.toString().split('/').reverse().join('/');
 };
@@ -19,12 +21,7 @@ const getLayoverFlights = (arr, origin, destination) => {
       .filter((value) => elm.date === value.date)
       .filter((value) => value.origin === elm.destination)
       .filter((value) => {
-        const firstFlightArrivalTime = elm.arrivalTime.split(':');
-        const secondFlightDepartureTime = value.departureTime.split(':');
-        const diff = `${
-          secondFlightDepartureTime[0] - firstFlightArrivalTime[0]
-        }:${secondFlightDepartureTime[1] - firstFlightArrivalTime[1]}`;
-        return diff >= '0:30';
+        return getTimeDiff(elm.arrivalTime, value.departureTime) >= '00.30';
       })
       .forEach((value) => {
         commonArr.push({
