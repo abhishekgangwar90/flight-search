@@ -8,12 +8,12 @@ import Content from '../../organisms/Content';
 import Filters from '../../organisms/Filters';
 import './HomeStyles.scss';
 import { getFilteredData } from './HomeUtils';
-// import { getFilteredData } from './HomeUtils';
 
 function Home() {
   const [isOneWay, setOneWay] = React.useState(true);
   const [state, dispatch] = React.useReducer(filterReducer, initialState);
   const [flightData, setFlightData] = React.useState([]);
+  const [returnFlightData, setReturnFlightData] = React.useState([]);
 
   /**
    * Fetches flight data and sets it in state
@@ -21,7 +21,11 @@ function Home() {
   const fetchFlightsInformation = async () => {
     const response = await fetchFlightsData();
     const filteredData = getFilteredData(response.data, state.data);
-    console.log(filteredData);
+    if (!isOneWay) {
+      const returnData = getFilteredData(response.data, state.data, true);
+      console.log(returnData);
+      setReturnFlightData(returnData);
+    }
     setFlightData(filteredData);
   };
 
@@ -31,6 +35,8 @@ function Home() {
    */
   const onFlightSearch = (e) => {
     e.preventDefault();
+    setFlightData([]);
+    setReturnFlightData([]);
     fetchFlightsInformation();
   };
 
@@ -61,9 +67,9 @@ function Home() {
         </div>
         <div className="content">
           <Content
-            isOneWay={isOneWay}
             flightState={state}
             flightData={flightData}
+            returnFlightData={returnFlightData}
           />
         </div>
       </div>

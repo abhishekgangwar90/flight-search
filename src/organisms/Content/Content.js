@@ -5,7 +5,7 @@ import ContentHeader from './ContentHeader';
 import './Content.scss';
 
 // takes care if we need to render one way or return UI
-function Content({ isOneWay, flightState, flightData }) {
+function Content({ flightState, flightData, returnFlightData }) {
   const { data, isLoading } = flightState;
 
   const renderFlightContent = () => {
@@ -27,17 +27,16 @@ function Content({ isOneWay, flightState, flightData }) {
 
   const renderReturnFlightContent = () => {
     return (
-      !isOneWay &&
-      data.returnDate &&
-      data.returnDate !== '' && (
+      returnFlightData &&
+      returnFlightData.length > 0 && (
         <div className="flightsContainer">
           <ContentHeader
             originCity={data.destination}
             destinationCity={data.origin}
             travelDate={data.returnDate}
-            flightCount={flightData.length}
+            flightCount={returnFlightData.length}
           />
-          <FlightList flightData={flightData} />
+          <FlightList flightData={returnFlightData} />
         </div>
       )
     );
@@ -58,8 +57,8 @@ function Content({ isOneWay, flightState, flightData }) {
 }
 
 Content.propTypes = {
-  isOneWay: PropTypes.bool,
   flightData: PropTypes.arrayOf(Object),
+  returnFlightData: PropTypes.arrayOf(Object),
   flightState: PropTypes.shape({
     isLoading: PropTypes.bool,
     data: PropTypes.shape({
@@ -73,8 +72,8 @@ Content.propTypes = {
 };
 
 Content.defaultProps = {
-  isOneWay: true,
   flightData: [],
+  returnFlightData: [],
   flightState: {
     isLoading: false,
     data: {

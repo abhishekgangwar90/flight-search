@@ -47,20 +47,37 @@ const getLayoverFlights = (arr, origin, destination) => {
   return commonArr;
 };
 
-export const getFilteredData = (responseData = [], filterState) => {
+export const getFilteredData = (
+  responseData = [],
+  filterState,
+  isReturnFlight
+) => {
+  const modifiedOrigin = isReturnFlight
+    ? filterState.destination
+    : filterState.origin;
+  const modifiedDestination = isReturnFlight
+    ? filterState.origin
+    : filterState.destination;
+
+  const modifiedDate = isReturnFlight
+    ? filterState.returnDate
+    : filterState.departureDate;
+
   const directFlight = responseData.filter((elm) => {
     return (
-      elm.origin === filterState.origin &&
-      elm.destination === filterState.destination &&
-      changeDateFormatToYYYYMMDD(elm.date) ===
-        convertDate(filterState.departureDate)
+      elm.origin === modifiedOrigin &&
+      elm.destination === modifiedDestination &&
+      changeDateFormatToYYYYMMDD(elm.date) === convertDate(modifiedDate)
     );
   });
 
   const layoverFlights = getLayoverFlights(
-    responseData,
-    filterState.origin,
-    filterState.destination
+    responseData.filter(
+      (elm) =>
+        changeDateFormatToYYYYMMDD(elm.date) === convertDate(modifiedDate)
+    ),
+    modifiedOrigin,
+    modifiedDestination
   );
 
   return [...directFlight, ...layoverFlights];
