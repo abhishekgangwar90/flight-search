@@ -4,11 +4,12 @@ import FlightDetails from '../../atoms/FlightDetails';
 import './FlightList.scss';
 
 function FlightList({ flightData }) {
-  console.log(flightData);
   return (
     <div className="flightListContainer">
-      {flightData.map((elm) => {
-        return <FlightDetails key={elm.flightNo} {...elm} />;
+      {flightData.map((elm, index) => {
+        // not a good practice to do, but api doesn't return id in response
+        // eslint-disable-next-line react/no-array-index-key
+        return <FlightDetails key={index} {...elm} />;
       })}
     </div>
   );

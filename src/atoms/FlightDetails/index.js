@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button';
 import './FlightDetails.scss';
+import { currencySeparator } from '../../utils/app.utils';
 
 function FlightDetails({
   arrivalTime,
@@ -30,7 +31,9 @@ function FlightDetails({
       {renderSection(departureTime, origin)}
       {renderSection(arrivalTime, destination)}
       {renderSection(arrivalTime - departureTime, 'Non Stop')}
-      {renderSection(price)}
+      {renderSection(
+        <span className="price">&#8377;{currencySeparator(price)}</span>
+      )}
       <div className="section">
         <Button>Book</Button>
       </div>

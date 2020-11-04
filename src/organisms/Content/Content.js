@@ -16,7 +16,7 @@ function Content({ isOneWay, flightState, flightData }) {
           <ContentHeader
             originCity={data.origin}
             destinationCity={data.destination}
-            travelDate={data.travelDate}
+            travelDate={data.departureDate}
             flightCount={flightData.length}
           />
           <FlightList flightData={flightData} />
@@ -65,7 +65,7 @@ Content.propTypes = {
     data: PropTypes.shape({
       origin: PropTypes.string,
       destination: PropTypes.string,
-      travelDate: PropTypes.string,
+      departureDate: PropTypes.string,
       returnDate: PropTypes.string,
     }),
     error: PropTypes.string,
@@ -80,7 +80,7 @@ Content.defaultProps = {
     data: {
       origin: '',
       destination: '',
-      travelDate: '',
+      departureDate: '',
       returnDate: '',
     },
     error: null,

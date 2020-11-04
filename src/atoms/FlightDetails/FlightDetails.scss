@@ -10,6 +10,10 @@
     padding: 2% 0%;
     border-radius: 5px;
     margin: 1% 0;
+
+    button{
+        background-color: lightcoral;
+    }
 }
 
 .section{
@@ -23,5 +27,11 @@
     span{
         font-size: $fontSmall;
         font-weight: 400;
+    }
+    
+    & .price{
+        font-size: $fontMedium;
+        font-weight: bold;
+        color: lightcoral
     }
 }

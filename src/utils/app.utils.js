@@ -7,3 +7,7 @@
 export const findByTestAttribute = (component, attr) => {
   return component.find(`[data-test='${attr}']`);
 };
+
+export const currencySeparator = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};

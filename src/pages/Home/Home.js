@@ -20,7 +20,8 @@ function Home() {
    */
   const fetchFlightsInformation = async () => {
     const response = await fetchFlightsData();
-    const filteredData = getFilteredData(response.data, state);
+    const filteredData = getFilteredData(response.data, state.data);
+    console.log(filteredData);
     setFlightData(filteredData);
   };
 
