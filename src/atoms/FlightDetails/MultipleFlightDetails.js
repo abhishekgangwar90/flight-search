@@ -17,15 +17,9 @@ function MultipleFlightsDetails({
   name,
   origin,
 }) {
-  console.log(
-    layoverDepartureTime,
-    layoverArrivalTime,
-    arrivalTime,
-    departureTime
-  );
-  const renderSection = (title, subTitle) => {
+  const renderSection = (title, subTitle, isLogo) => {
     return (
-      <div className="section">
+      <div className={`${isLogo ? 'customWidth' : ''} section`}>
         <div>{title}</div>
         {subTitle && <span>{subTitle}</span>}
       </div>
@@ -34,15 +28,15 @@ function MultipleFlightsDetails({
 
   return (
     <div className="multipleFlightSection">
-      <div className="mainContent">
-        {renderSection('X')}
+      <div className="mainContent expandedContent">
+        {renderSection('X', null, true)}
         {renderSection(name, flightNo)}
         {renderSection(departureTime, origin)}
         {renderSection(arrivalTime, layover)}
         {renderSection(getTimeDiff(departureTime, arrivalTime))}
       </div>
-      <div className="mainContent">
-        {renderSection('X')}
+      <div className="mainContent expandedContent">
+        {renderSection('X', null, true)}
         {renderSection(layoverName, layoverFlightNo)}
         {renderSection(layoverDepartureTime, layover)}
         {renderSection(layoverArrivalTime, destination)}

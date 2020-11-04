@@ -49,4 +49,12 @@
 
 .multipleFlightSection {
     background-color: #e6e6e6;
+
+    & .expandedContent{
+        width:68%;
+    }
+
+    & .customWidth{
+        flex-basis: 1rem;
+    }
 }

@@ -23,7 +23,6 @@ function Home() {
     const filteredData = getFilteredData(response.data, state.data);
     if (!isOneWay) {
       const returnData = getFilteredData(response.data, state.data, true);
-      console.log(returnData);
       setReturnFlightData(returnData);
     }
     setFlightData(filteredData);
