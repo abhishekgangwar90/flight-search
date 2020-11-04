@@ -1,15 +1,14 @@
 /* eslint-disable import/prefer-default-export */
-// import React from 'react';
 import { UPDATE_FIELD } from '../constants';
 
-const initialState = {
+export const initialState = {
   isLoading: false,
   data: {
     origin: '',
     destination: '',
     departureDate: '',
     returnDate: '',
-    passengerCount: 0,
+    passengerCount: '0',
   },
   error: null,
 };

@@ -9,4 +9,7 @@ input {
     margin: 2% 0;
     text-overflow: ellipsis;
     outline: none;
+
+    &::-webkit-datetime-edit { font-size: inherit; }
+    &::-webkit-calendar-picker-indicator { cursor: pointer; outline:none; font-size: inherit;}
 }
