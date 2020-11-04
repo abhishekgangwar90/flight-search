@@ -2,24 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Filters.scss';
 import FilterFields from './FilterFields';
-import { filterReducer, initialState } from './hooks/useFilterReducer';
-import { UPDATE_FIELD } from './constants';
 
-function Filters({ isOneWay, setOneWay, onFlightSearch }) {
-  const [state, dispatch] = React.useReducer(filterReducer, initialState);
-
-  const handleFlightSearch = (e) => {
-    e.preventDefault();
-    onFlightSearch(state.data);
-  };
-
-  const handleFieldUpdate = (id, value) => {
-    dispatch({
-      type: UPDATE_FIELD,
-      payload: { id, updatedField: value },
-    });
-  };
-
+function Filters({
+  isOneWay,
+  setOneWay,
+  flightState,
+  onFlightSearch,
+  handleFieldUpdate,
+}) {
   const renderFilterAction = () => {
     return (
       <>
@@ -50,9 +40,9 @@ function Filters({ isOneWay, setOneWay, onFlightSearch }) {
       <div className="filterAction">{renderFilterAction()}</div>
       <FilterFields
         isOneWay={isOneWay}
-        fieldData={state.data}
+        fieldData={flightState.data}
         onChange={handleFieldUpdate}
-        handleSearch={handleFlightSearch}
+        handleSearch={onFlightSearch}
       />
     </div>
   );
@@ -62,12 +52,34 @@ Filters.propTypes = {
   isOneWay: PropTypes.bool,
   setOneWay: PropTypes.func,
   onFlightSearch: PropTypes.func,
+  flightState: PropTypes.shape({
+    isLoading: PropTypes.bool,
+    data: PropTypes.shape({
+      origin: PropTypes.string,
+      destination: PropTypes.string,
+      travelDate: PropTypes.string,
+      returnDate: PropTypes.string,
+    }),
+    error: PropTypes.string,
+  }),
+  handleFieldUpdate: () => {},
 };
 
 Filters.defaultProps = {
   isOneWay: true,
+  flightState: {
+    isLoading: false,
+    data: {
+      origin: '',
+      destination: '',
+      travelDate: '',
+      returnDate: '',
+    },
+    error: null,
+  },
   setOneWay: () => {},
   onFlightSearch: () => {},
+  handleFieldUpdate: () => {},
 };
 
 export default Filters;

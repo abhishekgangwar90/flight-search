@@ -7,7 +7,6 @@ import { passengerSelectOptions } from './FilterConfig';
 import './Filters.scss';
 
 function FilterFields({ isOneWay, onChange, fieldData, handleSearch }) {
-  console.log(fieldData);
   return (
     <form className="form" onSubmit={handleSearch}>
       <Input
