@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './input.scss';
 
@@ -22,11 +22,16 @@ const data = [
   },
 ];
 
-function Input({ type, onChange, ...rest }) {
+function Input({ type, onChange, value, ...rest }) {
   const [suggestions, setSuggestion] = React.useState([]);
   const [inputVal, setInputValue] = React.useState('');
 
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
+
   const handleOnChange = (e) => {
+    // eslint-disable-next-line no-shadow
     const { value } = e.target;
     try {
       const substrRegex = new RegExp(value, 'i');
@@ -65,17 +70,19 @@ function Input({ type, onChange, ...rest }) {
       )}
     </div>
   ) : (
-    <input {...rest} onChange={onChange} type={type} />
+    <input {...rest} value={value} onChange={onChange} type={type} />
   );
 }
 
 Input.defaultProps = {
   type: '',
+  value: '',
   onChange: () => {},
 };
 
 Input.propTypes = {
   type: PropTypes.string,
+  value: PropTypes.string,
   onChange: PropTypes.func,
 };
 

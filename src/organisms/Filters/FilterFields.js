@@ -13,16 +13,15 @@ function FilterFields({ isOneWay, onChange, fieldData, handleSearch }) {
         name="origin"
         type="text"
         autoComplete="off"
-        // value={fieldData.origin}
+        value={fieldData.origin}
         onChange={(value) => onChange('origin', value)}
         placeholder="Enter Origin City"
         required
-        items={['pune', 'lllll']}
       />
       <Input
         name="destination"
         autoComplete="off"
-        // value={fieldData.destination}
+        value={fieldData.destination}
         onChange={(value) => onChange('destination', value)}
         placeholder="Enter Destination City"
         type="text"
@@ -32,6 +31,7 @@ function FilterFields({ isOneWay, onChange, fieldData, handleSearch }) {
         type="date"
         name="departureDate"
         placeholder="Departure Date"
+        value={fieldData.departureDate}
         onChange={(e) => onChange('departureDate', e.target.value)}
         required
       />
@@ -40,12 +40,13 @@ function FilterFields({ isOneWay, onChange, fieldData, handleSearch }) {
           type="date"
           name="returnDate"
           placeholder="Return Date"
+          value={fieldData.returnDate}
           onChange={(e) => onChange('returnDate', e.target.value)}
           required
         />
       )}
       <Select
-        defaultValue={0}
+        value={fieldData.passengerCount || ''}
         name="Passengers"
         options={passengerSelectOptions}
         onChange={(e) => onChange('passengerCount', e.target.value)}
@@ -58,7 +59,9 @@ function FilterFields({ isOneWay, onChange, fieldData, handleSearch }) {
         onClick={handleSearch}
         disabled={
           fieldData.passengerCount === '0' ||
-          fieldData.passengerCount === 'Select Passengers'
+          fieldData.passengerCount === 'Select Passengers' ||
+          fieldData.departureDate === '' ||
+          (!isOneWay && fieldData.returnDate === '')
         }
       >
         Search

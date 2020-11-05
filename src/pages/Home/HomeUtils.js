@@ -80,5 +80,10 @@ export const getFilteredData = (
     modifiedDestination
   );
 
-  return [...directFlight, ...layoverFlights];
+  return [...directFlight, ...layoverFlights].map((elm) => {
+    return {
+      ...elm,
+      price: elm.price * filterState.passengerCount,
+    };
+  });
 };

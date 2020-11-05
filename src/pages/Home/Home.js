@@ -1,8 +1,9 @@
-import React from 'react';
+/* eslint-disable no-debugger */
+import React, { useEffect } from 'react';
 import { fetchFlightsData } from '../../api';
 
 import Header from '../../atoms/Header';
-import { UPDATE_FIELD } from '../../constants';
+import { RESET_STATE, UPDATE_FIELD } from '../../constants';
 import { filterReducer, initialState } from '../../hooks/useFilterReducer';
 import Content from '../../organisms/Content';
 import Filters from '../../organisms/Filters';
@@ -18,12 +19,24 @@ function Home() {
     returnFlightData: [],
   });
 
+  useEffect(() => {
+    dispatch({
+      type: RESET_STATE,
+    });
+  }, [isOneWay]);
+
   /**
    * Fetches flight data and sets it in state
    */
   const fetchFlightsInformation = async () => {
     const response = await fetchFlightsData();
     const filteredData = getFilteredData(response.data, state.data);
+    setFlightDataState({
+      ...flightState,
+      isLoading: false,
+      flightData: filteredData,
+      returnFlightData: [],
+    });
     if (!isOneWay) {
       const returnData = getFilteredData(response.data, state.data, true);
       setFlightDataState({
@@ -32,11 +45,6 @@ function Home() {
         returnFlightData: returnData,
       });
     }
-    setFlightDataState({
-      ...flightState,
-      isLoading: false,
-      flightData: filteredData,
-    });
   };
 
   /**
@@ -45,11 +53,6 @@ function Home() {
    */
   const onFlightSearch = (e) => {
     e.preventDefault();
-    setFlightDataState({
-      isLoading: false,
-      flightData: [],
-      returnFlightData: [],
-    });
     setFlightDataState({
       isLoading: true,
       flightData: [],
@@ -69,6 +72,8 @@ function Home() {
       payload: { id, updatedField: value },
     });
   };
+
+  console.log(state);
 
   return (
     <>

@@ -2,9 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Select.scss';
 
-function Select({ name, required, options, onChange }) {
+function Select({ name, required, options, onChange, ...rest }) {
   return (
-    <select className="select-css" onChange={onChange} required={required}>
+    <select
+      className="select-css"
+      onChange={onChange}
+      required={required}
+      {...rest}
+    >
       <option>{`Select ${name}`}</option>
       {options.map((elm) => {
         return <option key={elm.id}>{elm.value}</option>;

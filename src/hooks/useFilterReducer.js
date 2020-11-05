@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { UPDATE_FIELD } from '../constants';
+import { RESET_STATE, UPDATE_FIELD } from '../constants';
 
 export const initialState = {
   isLoading: false,
@@ -24,6 +24,11 @@ export const filterReducer = (state = initialState, { type, payload }) => {
         },
         error: null,
       };
+    }
+
+    case RESET_STATE: {
+      console.log('resetting');
+      return initialState;
     }
 
     default:
