@@ -30,14 +30,14 @@ function ContentHeader({
 ContentHeader.propTypes = {
   originCity: PropTypes.string,
   destinationCity: PropTypes.string,
-  flightCount: PropTypes.string,
+  flightCount: PropTypes.number,
   travelDate: PropTypes.string,
 };
 
 ContentHeader.defaultProps = {
   originCity: '',
   destinationCity: '',
-  flightCount: '',
+  flightCount: 0,
   travelDate: '',
 };
 
