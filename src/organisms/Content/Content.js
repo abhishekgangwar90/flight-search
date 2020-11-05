@@ -14,8 +14,8 @@ function Content({ flightState, flightData, returnFlightData }) {
       flightData.length !== 0 && (
         <div className="flightsContainer">
           <ContentHeader
-            originCity={data.origin}
-            destinationCity={data.destination}
+            originCity={flightData[0].origin}
+            destinationCity={flightData[0].destination}
             travelDate={data.departureDate}
             flightCount={flightData.length}
           />
@@ -31,8 +31,8 @@ function Content({ flightState, flightData, returnFlightData }) {
       returnFlightData.length > 0 && (
         <div className="flightsContainer">
           <ContentHeader
-            originCity={data.destination}
-            destinationCity={data.origin}
+            originCity={flightData[0].destination}
+            destinationCity={flightData[0].origin}
             travelDate={data.returnDate}
             flightCount={returnFlightData.length}
           />

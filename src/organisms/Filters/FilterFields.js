@@ -13,8 +13,8 @@ function FilterFields({ isOneWay, onChange, fieldData, handleSearch }) {
         name="origin"
         type="text"
         autoComplete="off"
-        value={fieldData.origin}
-        onChange={(e) => onChange('origin', e.target.value)}
+        // value={fieldData.origin}
+        onChange={(value) => onChange('origin', value)}
         placeholder="Enter Origin City"
         required
         items={['pune', 'lllll']}
@@ -22,8 +22,8 @@ function FilterFields({ isOneWay, onChange, fieldData, handleSearch }) {
       <Input
         name="destination"
         autoComplete="off"
-        value={fieldData.destination}
-        onChange={(e) => onChange('destination', e.target.value)}
+        // value={fieldData.destination}
+        onChange={(value) => onChange('destination', value)}
         placeholder="Enter Destination City"
         type="text"
         required

@@ -36,11 +36,12 @@ function Input({ type, onChange, ...rest }) {
       console.log(err);
     }
     setInputValue(value);
-    onChange(e);
+    onChange(value);
   };
 
   const handleSuggestionClick = (val) => {
     setInputValue(val);
+    onChange(val);
     setSuggestion([]);
   };
 
