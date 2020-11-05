@@ -33,6 +33,7 @@ function FlightDetails(props) {
       <button
         type="button"
         className="text-button"
+        area-label="detail"
         onClick={() => setCanShowMultiple(!canShowMultiple)}
       >
         {canShowMultiple ? 'Hide Details' : 'Show Details'}
@@ -69,7 +70,7 @@ function FlightDetails(props) {
           <span className="price">&#8377;{currencySeparator(price)}</span>
         )}
         <div className="section">
-          <Button>Book</Button>
+          <Button area-label="book">Book</Button>
         </div>
       </div>
       {canShowMultiple && <MultipleFlightsDetails {...props} />}

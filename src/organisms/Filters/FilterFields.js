@@ -13,6 +13,7 @@ function FilterFields({ isOneWay, onChange, fieldData, handleSearch }) {
         name="origin"
         type="text"
         autoComplete="off"
+        area-label="origin"
         value={fieldData.origin}
         onChange={(value) => onChange('origin', value)}
         placeholder="Enter Origin City"
@@ -21,6 +22,7 @@ function FilterFields({ isOneWay, onChange, fieldData, handleSearch }) {
       <Input
         name="destination"
         autoComplete="off"
+        area-label="destination"
         value={fieldData.destination}
         onChange={(value) => onChange('destination', value)}
         placeholder="Enter Destination City"
@@ -30,6 +32,7 @@ function FilterFields({ isOneWay, onChange, fieldData, handleSearch }) {
       <Input
         type="date"
         name="departureDate"
+        area-label="departureDate"
         placeholder="Departure Date"
         value={fieldData.departureDate}
         onChange={(e) => onChange('departureDate', e.target.value)}
@@ -39,6 +42,7 @@ function FilterFields({ isOneWay, onChange, fieldData, handleSearch }) {
         <Input
           type="date"
           name="returnDate"
+          area-label="returnDate"
           placeholder="Return Date"
           value={fieldData.returnDate}
           onChange={(e) => onChange('returnDate', e.target.value)}
