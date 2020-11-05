@@ -19,7 +19,10 @@ function Content({ flightState, flightData, returnFlightData }) {
             travelDate={data.departureDate}
             flightCount={flightData.length}
           />
-          <FlightList flightData={flightData} />
+          <FlightList
+            flightData={flightData}
+            passengerCount={data.passengerCount}
+          />
         </div>
       )
     );
@@ -36,7 +39,10 @@ function Content({ flightState, flightData, returnFlightData }) {
             travelDate={data.returnDate}
             flightCount={returnFlightData.length}
           />
-          <FlightList flightData={returnFlightData} />
+          <FlightList
+            flightData={returnFlightData}
+            passengerCount={data.passengerCount}
+          />
         </div>
       )
     );
@@ -66,6 +72,7 @@ Content.propTypes = {
       destination: PropTypes.string,
       departureDate: PropTypes.string,
       returnDate: PropTypes.string,
+      passengerCount: PropTypes.string,
     }),
     error: PropTypes.string,
   }),
@@ -81,6 +88,7 @@ Content.defaultProps = {
       destination: '',
       departureDate: '',
       returnDate: '',
+      passengerCount: '0',
     },
     error: null,
   },

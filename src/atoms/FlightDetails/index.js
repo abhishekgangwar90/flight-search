@@ -16,6 +16,7 @@ function FlightDetails(props) {
     price,
     isLayoverFlight,
     layoverArrivalTime,
+    passengerCount,
   } = props;
   const [canShowMultiple, setCanShowMultiple] = React.useState(false);
 
@@ -65,7 +66,9 @@ function FlightDetails(props) {
           )
         )}
         {renderSection(
-          <span className="price">&#8377;{currencySeparator(price)}</span>
+          <span className="price">
+            &#8377;{currencySeparator(price * passengerCount)}
+          </span>
         )}
         <div className="section">
           <Button>Book</Button>
@@ -90,6 +93,7 @@ FlightDetails.propTypes = {
   layoverDepartureTime: PropTypes.string,
   layoverFlightNo: PropTypes.string,
   layoverName: PropTypes.string,
+  passengerCount: PropTypes.string,
 };
 
 FlightDetails.defaultProps = {
@@ -106,6 +110,7 @@ FlightDetails.defaultProps = {
   layoverDepartureTime: '',
   layoverFlightNo: '',
   layoverName: '',
+  passengerCount: '',
 };
 
 export default FlightDetails;
