@@ -18,7 +18,7 @@ const data = [
   },
   {
     id: 4,
-    value: 'Bangalore',
+    value: 'Bengaluru (BLR)',
   },
 ];
 
