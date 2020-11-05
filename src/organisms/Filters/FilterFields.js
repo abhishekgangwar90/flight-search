@@ -17,6 +17,7 @@ function FilterFields({ isOneWay, onChange, fieldData, handleSearch }) {
         onChange={(e) => onChange('origin', e.target.value)}
         placeholder="Enter Origin City"
         required
+        items={['pune', 'lllll']}
       />
       <Input
         name="destination"
