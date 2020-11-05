@@ -32,6 +32,7 @@ function FlightDetails(props) {
     return (
       <button
         type="button"
+        className="text-button"
         onClick={() => setCanShowMultiple(!canShowMultiple)}
       >
         {canShowMultiple ? 'Hide Details' : 'Show Details'}

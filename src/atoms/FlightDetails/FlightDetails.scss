@@ -13,6 +13,18 @@
     }
 }
 
+.text-button{
+    background-color: #fff !important;
+    color: blue;
+    font-weight: bold;
+    border: none;
+
+    &:hover{
+        background-color: rgba(0,0,255, 0.1) !important;
+        color: black
+    }
+}
+
 .mainContent{
     display: flex;
     padding: 2% 0%; 
@@ -45,6 +57,8 @@
         font-weight: bold;
     }
 }
+
+
 
 
 .multipleFlightSection {
