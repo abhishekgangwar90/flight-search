@@ -4,14 +4,12 @@ import PropTypes from 'prop-types';
 import FlightDetails from '../../atoms/FlightDetails';
 import './FlightList.scss';
 
-function FlightList({ flightData, passengerCount }) {
+function FlightList({ flightData }) {
   return (
     <div className="flightListContainer">
       {flightData.map((elm, index) => {
         // not a good practice to do, but api doesn't return id in response
-        return (
-          <FlightDetails key={index} passengerCount={passengerCount} {...elm} />
-        );
+        return <FlightDetails key={index} {...elm} />;
       })}
     </div>
   );
@@ -19,12 +17,10 @@ function FlightList({ flightData, passengerCount }) {
 
 FlightList.propTypes = {
   flightData: PropTypes.arrayOf(Object),
-  passengerCount: PropTypes.string,
 };
 
 FlightList.defaultProps = {
   flightData: [],
-  passengerCount: '0',
 };
 
 export default FlightList;

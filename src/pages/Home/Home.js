@@ -12,8 +12,11 @@ import { getFilteredData } from './HomeUtils';
 function Home() {
   const [isOneWay, setOneWay] = React.useState(true);
   const [state, dispatch] = React.useReducer(filterReducer, initialState);
-  const [flightData, setFlightData] = React.useState([]);
-  const [returnFlightData, setReturnFlightData] = React.useState([]);
+  const [flightState, setFlightDataState] = React.useState({
+    isLoading: false,
+    flightData: [],
+    returnFlightData: [],
+  });
 
   /**
    * Fetches flight data and sets it in state
@@ -23,9 +26,17 @@ function Home() {
     const filteredData = getFilteredData(response.data, state.data);
     if (!isOneWay) {
       const returnData = getFilteredData(response.data, state.data, true);
-      setReturnFlightData(returnData);
+      setFlightDataState({
+        ...flightState,
+        isLoading: false,
+        returnFlightData: returnData,
+      });
     }
-    setFlightData(filteredData);
+    setFlightDataState({
+      ...flightState,
+      isLoading: false,
+      flightData: filteredData,
+    });
   };
 
   /**
@@ -34,8 +45,16 @@ function Home() {
    */
   const onFlightSearch = (e) => {
     e.preventDefault();
-    setFlightData([]);
-    setReturnFlightData([]);
+    setFlightDataState({
+      isLoading: false,
+      flightData: [],
+      returnFlightData: [],
+    });
+    setFlightDataState({
+      isLoading: true,
+      flightData: [],
+      returnFlightData: [],
+    });
     fetchFlightsInformation();
   };
 
@@ -67,8 +86,9 @@ function Home() {
         <div className="content">
           <Content
             flightState={state}
-            flightData={flightData}
-            returnFlightData={returnFlightData}
+            isLoading={flightState.isLoading}
+            flightData={flightState.flightData}
+            returnFlightData={flightState.returnFlightData}
           />
         </div>
       </div>

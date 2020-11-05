@@ -5,8 +5,8 @@ import ContentHeader from './ContentHeader';
 import './Content.scss';
 
 // takes care if we need to render one way or return UI
-function Content({ flightState, flightData, returnFlightData }) {
-  const { data, isLoading } = flightState;
+function Content({ flightState, isLoading, flightData, returnFlightData }) {
+  const { data } = flightState;
 
   const renderFlightContent = () => {
     return (
@@ -19,10 +19,7 @@ function Content({ flightState, flightData, returnFlightData }) {
             travelDate={data.departureDate}
             flightCount={flightData.length}
           />
-          <FlightList
-            flightData={flightData}
-            passengerCount={data.passengerCount}
-          />
+          <FlightList flightData={flightData} />
         </div>
       )
     );
@@ -39,10 +36,7 @@ function Content({ flightState, flightData, returnFlightData }) {
             travelDate={data.returnDate}
             flightCount={returnFlightData.length}
           />
-          <FlightList
-            flightData={returnFlightData}
-            passengerCount={data.passengerCount}
-          />
+          <FlightList flightData={returnFlightData} />
         </div>
       )
     );
@@ -56,7 +50,7 @@ function Content({ flightState, flightData, returnFlightData }) {
           {renderReturnFlightContent()}
         </>
       ) : (
-        'loading'
+        'Loading... Please wait'
       )}
     </div>
   );
@@ -64,6 +58,7 @@ function Content({ flightState, flightData, returnFlightData }) {
 
 Content.propTypes = {
   flightData: PropTypes.arrayOf(Object),
+  isLoading: PropTypes.bool,
   returnFlightData: PropTypes.arrayOf(Object),
   flightState: PropTypes.shape({
     isLoading: PropTypes.bool,
@@ -80,6 +75,7 @@ Content.propTypes = {
 
 Content.defaultProps = {
   flightData: [],
+  isLoading: false,
   returnFlightData: [],
   flightState: {
     isLoading: false,
